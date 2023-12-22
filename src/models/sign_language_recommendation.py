@@ -2,7 +2,7 @@ import numpy as np
 import tensorflow as tf
 
 signs = [1, 6, 11, 16, 21]
-next_signs = [2, 7, 12, 17, 22
+next_signs = [2, 7, 12, 17, 22]
 
 reader = 1  # The user who is reading the material or studying
 
@@ -34,13 +34,3 @@ model.fit(combined_input, next_signs_array, epochs=700)
 
 # Save the trained model to h5
 model.save('sign_language_recommendation_model.h5')
-
-# Test the recommendation for the reader reading sign 11
-current_sign = 11
-reader_input = np.array([[reader, current_sign]])
-predicted_next_sign_probs = model.predict(reader_input)
-
-# Get the highest probability as the recommended next sign
-predicted_next_sign = np.argmax(predicted_next_sign_probs)
-
-print(f"Current Sign: {current_sign}, Recommended Next Sign: {predicted_next_sign}")
